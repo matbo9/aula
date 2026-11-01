@@ -8,6 +8,7 @@ import requests
 MODELLO = os.environ.get("GEMINI_MODEL") or "gemini-2.5-flash"
 CHIAVE = os.environ.get("GEMINI_API_KEY", "")
 PAROLE_MIN = 155
+PAUSA = float(os.environ.get("AULA_PAUSA") or 15)
 
 FORMATO = """Ogni slide è un oggetto JSON con "tipo", "titolo" (breve, max 70 caratteri) e "narrazione" (ciò che la voce dice).
 Tipi disponibili:
@@ -28,7 +29,7 @@ def chiama(prompt, max_token=16000, temperatura=0.5):
     corpo = {"contents": [{"parts": [{"text": prompt}]}],
              "generationConfig": {"temperature": temperatura, "maxOutputTokens": max_token,
                                   "responseMimeType": "application/json"}}
-    for t in range(6):
+    for t in range(10):
         try:
             r = requests.post(url, headers={"x-goog-api-key": CHIAVE, "Content-Type": "application/json"},
                               json=corpo, timeout=300)
@@ -36,9 +37,12 @@ def chiama(prompt, max_token=16000, temperatura=0.5):
             print("Gemini: errore di rete (%s), riprovo" % type(e).__name__, flush=True)
             time.sleep(15 * (t + 1))
             continue
+        if r.status_code == 429 and re.search(r"PerDay|per day|daily", r.text, re.I):
+            raise RuntimeError("Gemini: quota giornaliera gratuita esaurita. Riprova domani oppure cambia modello (variabile GEMINI_MODEL)")
         if r.status_code in (429, 500, 502, 503, 504):
-            print("Gemini occupato (%d), riprovo tra %d s" % (r.status_code, 25 * (t + 1)), flush=True)
-            time.sleep(25 * (t + 1))
+            attesa = min(30 * (t + 1), 120)
+            print("Gemini occupato (%d), riprovo tra %d s" % (r.status_code, attesa), flush=True)
+            time.sleep(attesa)
             continue
         if r.status_code != 200:
             raise RuntimeError("Gemini errore %d: %s" % (r.status_code, r.text[:160].replace("\n", " ")))
@@ -68,7 +72,7 @@ def json_da_testo(t):
 def chiedi_json(prompt, valido, tentativi=3, max_token=16000, temperatura=0.5):
     ultimo = ""
     for t in range(tentativi):
-        time.sleep(6)
+        time.sleep(PAUSA)
         try:
             obj = json_da_testo(chiama(prompt + ultimo, max_token, temperatura))
             if valido(obj):
