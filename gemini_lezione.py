@@ -160,3 +160,24 @@ Se trovi errori rispondi {"ok":false,"note":"cosa hai corretto","slide":[... la 
     if r.get("ok") is False and isinstance(r.get("slide"), list) and r["slide"]:
         return r["slide"], str(r.get("note", ""))[:200]
     return sez_json["slide"], None
+
+
+def piano_corso(corso):
+    prompt = """Sei un professore universitario italiano che progetta il percorso di studio completo per uno studente di livello triennale che deve superare l'esame.
+
+DESCRIZIONE DEL CORSO E DEI LIBRI:
+%s
+
+Crea il percorso di lezioni video che copre TUTTI gli argomenti dei libri indicati, nell'ordine più adatto per imparare (da ciò che serve per capire il resto fino ai temi più avanzati), senza approfondimenti da magistrale. Ogni lezione dura da 12 a 30 minuti: un capitolo grande può diventare due lezioni, capitoli brevi o collegati possono stare insieme. Tra 12 e 30 lezioni in tutto. NON includere la lezione introduttiva e non includere il ripasso finale: li aggiungo io.
+Rispondi SOLO con JSON: {"lezioni":[{"titolo":"titolo breve","scopo":"cosa si spiega, 1-2 frasi","capitoli":"capitoli dei libri a cui corrisponde","minuti":numero}]}""" % corso[:12000]
+    p = chiedi_json(prompt, lambda o: isinstance(o, dict) and isinstance(o.get("lezioni"), list)
+                    and len(o["lezioni"]) >= 3 and all(isinstance(x, dict) and x.get("titolo") for x in o["lezioni"]))
+    out = []
+    for x in p["lezioni"]:
+        try:
+            m = float(x.get("minuti") or 20)
+        except Exception:
+            m = 20
+        out.append({"titolo": str(x["titolo"])[:100], "scopo": str(x.get("scopo", ""))[:300],
+                    "capitoli": str(x.get("capitoli", ""))[:150], "minuti": int(max(12, min(m, 30)))})
+    return out
