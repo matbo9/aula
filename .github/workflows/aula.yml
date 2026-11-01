@@ -1,0 +1,38 @@
+name: Aula
+on:
+  workflow_dispatch:
+    inputs:
+      corso:
+        description: "Nome del file del corso, senza .txt"
+        default: "economia_internazionale"
+      argomento:
+        description: "Argomento della lezione"
+        default: "Il modello ricardiano e il vantaggio comparato"
+      minuti:
+        description: "Durata della lezione in minuti (da 10 a 40)"
+        default: "15"
+permissions:
+  contents: read
+jobs:
+  aula:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Installa ffmpeg se manca
+        run: which ffmpeg || (sudo apt-get update && sudo apt-get install -y ffmpeg)
+      - run: pip install requests matplotlib numpy edge-tts gTTS
+      - run: python aula.py
+        env:
+          CORSO: ${{ inputs.corso }}
+          ARGOMENTO: ${{ inputs.argomento }}
+          MINUTI: ${{ inputs.minuti }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
