@@ -1,0 +1,106 @@
+{
+ "lezioni": [
+  {
+   "titolo": "Vantaggio comparato e modello ricardiano",
+   "scopo": "Comprendere le differenze tecnologiche tra paesi come base del commercio e calcolare il vantaggio comparato per determinare la convenienza allo scambio.",
+   "capitoli": "Reinert Cap. II, III; Feenstra-Taylor Cap. 1, 2",
+   "minuti": 24
+  },
+  {
+   "titolo": "Modello a fattori specifici e distribuzione del reddito",
+   "scopo": "Analizzare gli effetti redistributivi del commercio nel breve periodo, identificando chi vince e chi perde dall'apertura agli scambi.",
+   "capitoli": "Feenstra-Taylor Cap. 3",
+   "minuti": 22
+  },
+  {
+   "titolo": "Dotazione di risorse: il modello di Heckscher-Ohlin",
+   "scopo": "Spiegare la specializzazione produttiva basata sulle dotazioni fattoriali e illustrare i teoremi di Stolper-Samuelson e Rybczynski.",
+   "capitoli": "Feenstra-Taylor Cap. 4; Reinert Cap. III",
+   "minuti": 26
+  },
+  {
+   "titolo": "Economie di scala e commercio intrasettoriale",
+   "scopo": "Illustrare come la concorrenza monopolistica e i rendimenti di scala crescenti spieghino lo scambio bidirezionale di beni differenziati tra paesi simili.",
+   "capitoli": "Reinert Cap. IV; Feenstra-Taylor Cap. 6",
+   "minuti": 22
+  },
+  {
+   "titolo": "Frammentazione della produzione e outsourcing internazionale",
+   "scopo": "Esaminare la scomposizione delle catene del valore, la delocalizzazione e l'outsourcing globale di beni e servizi intermedi.",
+   "capitoli": "Feenstra-Taylor Cap. 7; Reinert Cap. IX, XI",
+   "minuti": 20
+  },
+  {
+   "titolo": "Dazi e contingentamenti in concorrenza perfetta",
+   "scopo": "Valutare graficamente l'impatto economico di dazi, quote all'importazione e sussidi su benessere sociale, consumatori e produttori.",
+   "capitoli": "Reinert Cap. VI; Feenstra-Taylor Cap. 8",
+   "minuti": 25
+  },
+  {
+   "titolo": "Economia politica della protezione e accordi commerciali preferenziali",
+   "scopo": "Spiegare le pressioni dei gruppi d'interesse sulla politica commerciale e distinguere tra creazione e deviazione di commercio nelle unioni doganali.",
+   "capitoli": "Reinert Cap. V, VIII",
+   "minuti": 20
+  },
+  {
+   "titolo": "L'Organizzazione Mondiale del Commercio (OMC)",
+   "scopo": "Presentare i principi cardine del multilateralismo, le regole del GATT/OMC e i meccanismi di risoluzione delle controversie internazionali.",
+   "capitoli": "Reinert Cap. VII",
+   "minuti": 18
+  },
+  {
+   "titolo": "Mobilità internazionale del lavoro e migrazioni",
+   "scopo": "Comprendere le determinanti e gli effetti economici dei flussi migratori su salari e occupazione nei paesi di origine e di destinazione.",
+   "capitoli": "Reinert Cap. XII; Feenstra-Taylor Cap. 5",
+   "minuti": 18
+  },
+  {
+   "titolo": "Investimenti diretti esteri e imprese multinazionali",
+   "scopo": "Analizzare i motivi alla base degli IDE orizzontali e verticali e comprendere la scelta dell'impresa tra esportazione e produzione all'estero.",
+   "capitoli": "Reinert Cap. IX, X; Feenstra-Taylor Cap. 5",
+   "minuti": 22
+  },
+  {
+   "titolo": "Bilancia dei pagamenti e regolamentazione contabile",
+   "scopo": "Imparare la struttura del conto corrente, conto capitale e conto finanziario e il legame tra risparmio, investimenti ed equilibrio estero.",
+   "capitoli": "Reinert Cap. XIII",
+   "minuti": 20
+  },
+  {
+   "titolo": "Tassi di cambio e parità dei poteri d'acquisto",
+   "scopo": "Definire tassi di cambio nominali e reali e spiegare le condizioni di parità dei poteri d'acquisto (PPP) e della legge del prezzo unico.",
+   "capitoli": "Reinert Cap. XIV",
+   "minuti": 20
+  },
+  {
+   "titolo": "Regimi di cambio flessibili e fissi",
+   "scopo": "Confrontare l'efficacia delle politiche monetarie e fiscali sotto cambi fissi e flessibili e comprendere il trilemma della finanza internazionale.",
+   "capitoli": "Reinert Cap. XV, XVI",
+   "minuti": 25
+  },
+  {
+   "titolo": "Fondo Monetario Internazionale e crisi finanziarie",
+   "scopo": "Esaminare il ruolo del FMI, l'insorgenza delle crisi valutarie e di debito sovrano e le tipologie di interventi di salvataggio.",
+   "capitoli": "Reinert Cap. XVII, XVIII",
+   "minuti": 22
+  },
+  {
+   "titolo": "Aree valutarie ottimali e unioni monetarie",
+   "scopo": "Analizzare i criteri per l'adesione a una moneta unica (teoria di Mundell) e il funzionamento dell'Unione Economica e Monetaria europea.",
+   "capitoli": "Reinert Cap. XIX",
+   "minuti": 20
+  },
+  {
+   "titolo": "Commercio internazionale, crescita e sviluppo economico",
+   "scopo": "Discutere la relazione tra apertura commerciale, crescita economica e riduzione della povertà nei paesi in via di sviluppo.",
+   "capitoli": "Reinert Cap. XX, XXI",
+   "minuti": 18
+  },
+  {
+   "titolo": "Politiche industriali e aggiustamento strutturale",
+   "scopo": "Comprendere le strategie di sostituzione delle importazioni vs promozione delle esportazioni e le problematiche dell'aggiustamento strutturale.",
+   "capitoli": "Reinert Cap. XXII, XXIV",
+   "minuti": 20
+  }
+ ]
+}
