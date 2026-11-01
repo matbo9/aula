@@ -4,6 +4,9 @@ import re
 import subprocess
 
 VOCE = os.environ.get("AULA_VOCE") or "it-IT-IsabellaNeural"
+RITMO = os.environ.get("AULA_RITMO") or "-4%"
+if not re.fullmatch(r"[+-]\d+%", RITMO):
+    RITMO = "-4%"
 PROVA = os.environ.get("AULA_TEST") == "1"
 
 
@@ -36,7 +39,7 @@ async def _edge(testo, percorso, sem):
     async with sem:
         for t in range(3):
             try:
-                await edge_tts.Communicate(testo, VOCE, rate="+0%").save(percorso)
+                await edge_tts.Communicate(testo, VOCE, rate=RITMO).save(percorso)
                 if os.path.exists(percorso) and os.path.getsize(percorso) > 500:
                     return True
             except Exception as e:
